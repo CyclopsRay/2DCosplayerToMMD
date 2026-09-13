@@ -5,7 +5,7 @@
 ### One photo. Nano Banana Pro T pose. A dancing 3D character.
 ### 把“原图 → Nano Banana Pro T pose → 3D → MMD”变成可复用的技能。
 
-<img src="https://raw.githubusercontent.com/CyclopsRay/CosMMD/main/docs/media/hero.gif?v=photo-tpose-2" width="1440" alt="CosMMD original photo, prepared T pose and twelve-second dance demonstration">
+<img src="https://raw.githubusercontent.com/CyclopsRay/CosMMD/main/docs/media/photo-to-mmd.gif" width="1440" alt="CosMMD original photo, prepared T pose and twelve-second dance demonstration">
 
 **The agent skill behind [CosMMD](https://github.com/CyclopsRay/CosMMD).**
 
