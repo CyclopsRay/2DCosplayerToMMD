@@ -1,0 +1,4 @@
+interface:
+  display_name: "2D Cosplayer to MMD"
+  short_description: "One image to a faithful, rigged Blender MMD dancer"
+  default_prompt: "Use $2d-cosplayer-to-mmd to turn my character image into a faithful rigged Blender character and a verified MMD dance clip."
