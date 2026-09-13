@@ -1,6 +1,6 @@
 ---
 name: 2d-cosplayer-to-mmd
-description: Turn one full-body character or cosplay image into an appearance-preserving Tripo/Blender character with an articulated rig and licensed MMD motion. Use for single-image character-to-MMD work, rig repair, retargeting, render diagnosis, or packaging the resulting workflow. Works with the CosMMD toolkit; geometry-specific calibration is agent-guided.
+description: Turn one original character or cosplay photo into a Nano Banana Pro T-pose reference through Tripo API, then an appearance-preserving Tripo/Blender character with an articulated rig and licensed MMD motion. Use for single-image character-to-MMD work, rig repair, retargeting, render diagnosis, or packaging the resulting workflow. Works with the CosMMD toolkit; geometry-specific calibration is agent-guided.
 ---
 
 # 2D Cosplayer to MMD
@@ -12,8 +12,10 @@ workflow, not a guarantee of one-click success on arbitrary images.
 
 ## Inputs and scope
 
-- One full-body image, ideally a clear T/A pose with hands and shoes visible. Do not
-  require a second face image or multiview set unless the user changes the task.
+- One original character photo, ideally showing the outfit, hands and shoes. A T/A
+  pose is not required: prepare it through Nano Banana Pro on Tripo API. The generated
+  T pose is an intermediate output, not a second user-provided image. Do not require
+  a face close-up or multiview set unless the user changes the task.
 - A Tripo API key through local environment/credential storage; never repeat it in
   output, scripts, screenshots, repository files or saved command examples.
 - A locally available motion with applicable permission. The motion is an external
@@ -27,8 +29,12 @@ substitute another paid service, or publish assets merely because a key is avail
 
 ## Work in explicit stages
 
-1. **Preserve and generate/reuse.** Create a private run directory outside tracked
-   source. Keep original image/source GLB unchanged. Inspect existing Studio exports
+1. **Prepare the pose, then generate/reuse.** Create a private run directory outside
+   tracked source. Keep the original photo unchanged. For a posed/cluttered input,
+   use CosMMD `prepare`: Tripo v3 image-to-image, `model: banana_pro`, `template: t_pose`.
+   Preserve identity, asymmetry and costume details while removing scene/held props.
+   Compare the generated T pose against the original, then pass that PNG to `generate`.
+   Keep source GLB unchanged. Inspect existing Studio exports
    if requested; a Studio ID is not necessarily an API task ID. Use checkpointed tasks,
    download successful outputs promptly, and stop ambiguous POST retries.
    Read [Tripo operations](references/tripo.md) for API/version/resume decisions.
@@ -56,6 +62,10 @@ substitute another paid service, or publish assets merely because a key is avail
 
 ## Essential invariants
 
+- Original photo, generated T pose and 3D model are distinct assets. Label each
+  accurately. Record the image task, prompt and hashes privately; never describe a
+  reused intermediate as freshly produced by a newly added API step. Occluded anatomy
+  and costume details may be inferred; check them before accepting the T pose.
 - Anatomical left/right belongs to the character, not the camera view. Verify each
   leg's weights and target independently; do not solve it by guessing a name swap.
 - Existing hand/foot/costume geometry and UVs are the visual ground truth. Reconstruction
@@ -74,8 +84,10 @@ substitute another paid service, or publish assets merely because a key is avail
 
 ## Use the toolkit
 
-The companion repository documents installation and actual commands. Its `generate`
-command is a no-cost plan until `--execute`; task journals prevent blind resubmission.
+The companion repository documents installation and actual commands. Its `prepare`
+command produces the T pose through Nano Banana Pro; `generate` consumes that reviewed
+image for 3D generation. Both are no-cost plans until `--execute`; task journals prevent
+blind resubmission. A suitable existing T pose can skip preparation.
 `inspect` reports source topology/bones. `blender/rig_ops.py` provides reusable
 appearance-preserving operations. `recipes/reference_character/` contains the fitted
 case, which must be adapted for another character. `render`, `qa` and `cosmmd.gif`

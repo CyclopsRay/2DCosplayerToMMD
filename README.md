@@ -2,10 +2,10 @@
 
 # 2DCosplayerToMMD
 
-### Teach your agent the journey from one image to a dancing character.
-### 把“一张图 → 3D 角色 → MMD 舞蹈”变成可复用的技能。
+### One photo. Nano Banana Pro T pose. A dancing 3D character.
+### 把“原图 → Nano Banana Pro T pose → 3D → MMD”变成可复用的技能。
 
-<img src="https://raw.githubusercontent.com/CyclopsRay/CosMMD/main/docs/media/hero.gif" width="1040" alt="CosMMD single-image to twelve-second dance demonstration">
+<img src="https://raw.githubusercontent.com/CyclopsRay/CosMMD/main/docs/media/hero.gif" width="1440" alt="CosMMD original photo, prepared T pose and twelve-second dance demonstration">
 
 **The agent skill behind [CosMMD](https://github.com/CyclopsRay/CosMMD).**
 
@@ -13,8 +13,9 @@
 
 </div>
 
-Give the agent **one full-body character image and access to a Tripo API key**.
-This skill guides source-preserving modeling, anatomical rig repair, articulated
+Give the agent **one original character photo and access to a Tripo API key**.
+The skill first prepares a T-pose image with Nano Banana Pro through Tripo API,
+then uses that reviewed image for 3D generation. It guides source-preserving modeling, anatomical rig repair, articulated
 fingers, licensed MMD motion import, render diagnosis, and verified delivery in Blender.
 A separately licensed motion is required for the dance. Complex models still need
 agent or human calibration; this is not a universal one-click rigging service.
@@ -37,8 +38,9 @@ Restart or refresh the agent's skill discovery if needed. Install the companion
 The skill is automatically discoverable and can also be invoked explicitly:
 
 ```text
-Use $2d-cosplayer-to-mmd to turn my full-body character image into a faithful
-Blender character and a 12-second MMD dance. Preserve the original hands,
+Use $2d-cosplayer-to-mmd to prepare a T-pose image from my original photo using
+Nano Banana Pro through Tripo API, then turn that image into a faithful Blender
+character and a 12-second MMD dance. Preserve the original hands,
 shoes and outfit; use the motion I am licensed to use.
 ```
 
@@ -50,7 +52,7 @@ prompt. The skill does not contain an API key, source model, motion file or bake
 | Resource | Purpose |
 |---|---|
 | [SKILL.md](SKILL.md) | Core decisions, stage gates and output requirements |
-| [Tripo operations](references/tripo.md) | Studio/API boundaries, task recovery and credit-aware execution |
+| [Tripo operations](references/tripo.md) | Photo → Nano Banana Pro T pose → 3D, Studio/API boundaries and task recovery |
 | [Rigging](references/rigging.md) | Source preservation, actual anatomy, fingers, knee IK and rest pose |
 | [Rendering](references/rendering.md) | Black-artifact diagnosis, frame isolation and complete QA |
 | [Publication](references/publication.md) | Copyright, credentials, audited media and honest presentation |
@@ -65,10 +67,12 @@ skill if the workflow helps your agent build better characters.**
 
 ## 中文
 
-只需一张角色全身图和 Tripo API 密钥，技能会引导 agent 完成单图建模、原型保留、
+只需一张原始角色照片和 Tripo API 密钥。技能先引导 agent 通过 Tripo API 中的
+Nano Banana Pro 生成 T pose 图片，对照原图检查后再用 T pose 生成 3D，随后完成原型保留、
 骨骼校准、手指绑定、MMD 动作导入、逐帧渲染检查和交付。舞蹈动作需要另行取得许可；
 复杂角色仍需要校准，并非所有图片都能全自动完成。
 
+T pose 是中间产物，不需要你额外提供；已有合适 T pose 时也可以跳过预处理。
 它记录了这次真实流程中最重要的经验：左右腿必须按身体定义，肘膝要落在真实关节位置；
 手指存在时直接绑定，手、鞋和衣服不要随意重建；T pose 与 MMD 初始姿势需要校准；
 视频必须逐帧检查，黑块可能来自渲染状态，不能直接归因于模型缺面。

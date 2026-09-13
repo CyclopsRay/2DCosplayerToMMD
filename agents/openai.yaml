@@ -1,4 +1,4 @@
 interface:
   display_name: "2D Cosplayer to MMD"
-  short_description: "One image to a faithful, rigged Blender MMD dancer"
-  default_prompt: "Use $2d-cosplayer-to-mmd to turn my character image into a faithful rigged Blender character and a verified MMD dance clip."
+  short_description: "Photo to Nano Banana Pro T pose to Blender MMD"
+  default_prompt: "Use $2d-cosplayer-to-mmd to prepare a T pose from my original photo with Nano Banana Pro through Tripo API, then generate a faithful rigged Blender character and a verified MMD dance clip."
