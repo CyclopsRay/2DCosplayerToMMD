@@ -51,6 +51,9 @@ substitute another paid service, or publish assets merely because a key is avail
 5. **Validate motion.** Test independent limbs and fingers, all-frame finite bone
    transforms, hinge direction, weights, drivers and reach-aware IK. Inspect deformed
    shoes against the floor, camera framing, crouches, lifts, turns and hair/skirt behavior.
+   When planning or adding garment physics, photo-matched lights or a room, read
+   [cloth and scene extensions](references/cloth-and-scene.md). These are planned
+   extensions; the current showcase has no cloth simulation.
 6. **Render and verify.** Start with small renders. Use independent fresh Blender
    processes per frame for the known failure-prone pipeline; keep PNG masters and
    resumable progress. Read [render checks](references/rendering.md). Scan every frame,
