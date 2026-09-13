@@ -54,6 +54,8 @@ prompt. The skill does not contain an API key, source model, motion file or bake
 | [SKILL.md](SKILL.md) | Core decisions, stage gates and output requirements |
 | [Tripo operations](references/tripo.md) | Photo → Nano Banana Pro T pose → 3D, Studio/API boundaries and task recovery |
 | [Rigging](references/rigging.md) | Source preservation, actual anatomy, fingers, knee IK and rest pose |
+| [Parts and face alignment](references/parts.md) | Existing segmentation, local generation, common rig and texture diagnosis |
+| [Cloth and scene](references/cloth-and-scene.md) | Planned garment physics, photo-matched lighting and room reconstruction |
 | [Rendering](references/rendering.md) | Black-artifact diagnosis, frame isolation and complete QA |
 | [Publication](references/publication.md) | Copyright, credentials, audited media and honest presentation |
 
@@ -76,6 +78,8 @@ T pose 是中间产物，不需要你额外提供；已有合适 T pose 时也�
 它记录了这次真实流程中最重要的经验：左右腿必须按身体定义，肘膝要落在真实关节位置；
 手指存在时直接绑定，手、鞋和衣服不要随意重建；T pose 与 MMD 初始姿势需要校准；
 视频必须逐帧检查，黑块可能来自渲染状态，不能直接归因于模型缺面。
+分件模型、独立生成头/身体/腿，以及五官贴图错位的处理见 [分件决策](references/parts.md)。
+布料与场景仍是规划中的扩展，当前展示没有布料模拟。
 
 安装命令见上方。用 `$2d-cosplayer-to-mmd` 调用技能；配合
 [CosMMD 工具仓库](https://github.com/CyclopsRay/CosMMD) 运行代码。

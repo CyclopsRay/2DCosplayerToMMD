@@ -7,6 +7,9 @@ simulation. New stages are proposals until implemented and verified.
 The maintained contracts, technology choices, milestones and acceptance criteria
 live in [CosMMD's technical roadmap](https://github.com/CyclopsRay/CosMMD/blob/main/docs/technical-roadmap.md).
 Use its current implementation status; do not invent CLI commands from stage names.
+Before choosing an existing segmented asset or generating regions independently,
+read [part-pipeline decisions](parts.md). A material boundary is not necessarily a
+sewing line, and a visible part is not automatically a simulation-ready garment.
 
 - Keep the original photo for room/camera/light evidence. The generated T pose is
   for character modeling and cannot preserve source-image pixel correspondence.

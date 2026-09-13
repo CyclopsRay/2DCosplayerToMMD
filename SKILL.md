@@ -41,6 +41,8 @@ substitute another paid service, or publish assets merely because a key is avail
 2. **Inspect the original surface.** Examine front, side and oblique views, connected
    topology, UVs, materials, real finger gaps, actual shoe shape and hidden anatomy.
    Do not infer fused fingers from one view or low-resolution proxies.
+   For segmented assets, independent regional generation or facial texture misalignment,
+   read [part-pipeline decisions](references/parts.md) before changing the source.
 3. **Preserve identity while rigging.** Transfer weights onto the original surface.
    Fit joints to anatomy, directly bind existing fingers, preserve cuff ornaments,
    and change geometry only where a verified fused/missing region requires it.
